@@ -7,7 +7,7 @@ package mygame;
 public class Main{
 
     public static void main(String[] args) {
-        SurroudBox app = new SurroudBox();
+        GameController app = new GameController();
         app.start();
     }
 }

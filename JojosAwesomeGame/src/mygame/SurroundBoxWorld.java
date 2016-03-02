@@ -4,7 +4,6 @@
  */
 package mygame;
 
-import com.jme3.app.SimpleApplication;
 import com.jme3.material.Material;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Node;
@@ -14,15 +13,14 @@ import com.jme3.scene.shape.Box;
  *
  * @author dragondompy
  */
-public class SurroudBox extends SimpleApplication{
-    
-    public void simpleInitApp() {
+public class SurroundBoxWorld {
+    public SurroundBoxWorld(GameController gameCon){
         float size = 5f;
         
         Box b = new Box(size,size,0);
         Geometry Standart = new Geometry("Box",b);
-        Material mat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
-        mat.setTexture("ColorMap", assetManager.loadTexture("Textures/Space_Background.jpg"));
+        Material mat = new Material(gameCon.getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
+        mat.setTexture("ColorMap", gameCon.getAssetManager().loadTexture("Textures/Space_Background.jpg"));
         Standart.setMaterial(mat);
         Standart.setLocalTranslation(0f, 0f, 0f);
         
@@ -53,7 +51,6 @@ public class SurroudBox extends SimpleApplication{
         BoxNode.attachChild(Left);
         BoxNode.attachChild(Right);
         
-        rootNode.attachChild(BoxNode);
+        gameCon.getRootNode().attachChild(BoxNode);
     }
-    
 }
