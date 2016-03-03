@@ -5,6 +5,7 @@
 package mygame;
 
 import com.jme3.app.SimpleApplication;
+import com.jme3.bullet.BulletAppState;
 import com.jme3.material.Material;
 import com.jme3.renderer.RenderManager;
 import com.jme3.scene.Geometry;
@@ -16,7 +17,8 @@ import com.jme3.scene.shape.Box;
  * @author dragondompy
  */
 public class GameController extends SimpleApplication{
-    public SurroundBoxWorld gameWorld;
+    private SurroundBoxWorld gameWorld;
+    
     @Override
     public void simpleInitApp() {
         gameWorld = new SurroundBoxWorld(this);
@@ -25,9 +27,5 @@ public class GameController extends SimpleApplication{
     @Override
     public void simpleUpdate(float tpf){
     }
-    
-    @Override
-    public void simpleRender(RenderManager rm){
-    }   
     
 }
