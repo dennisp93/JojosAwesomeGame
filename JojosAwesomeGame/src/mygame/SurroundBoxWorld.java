@@ -9,6 +9,7 @@ import com.jme3.bullet.collision.shapes.CollisionShape;
 import com.jme3.bullet.control.RigidBodyControl;
 import com.jme3.bullet.util.CollisionShapeFactory;
 import com.jme3.material.Material;
+import com.jme3.math.Vector3f;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Node;
 import com.jme3.scene.shape.Box;
@@ -20,8 +21,9 @@ import java.util.ArrayList;
  */
 public class SurroundBoxWorld {
     public SurroundBoxWorld(GameController gameCon){
-        //Size of the Cube and List of the sides
-        float size = 5f;
+        //Size of the Cube, startVector and List of the sides
+        float size = 20f;
+        Vector3f startVector = new Vector3f(0.0f, 0.0f, 10.0f);
         ArrayList<Geometry> sideList = new ArrayList<Geometry>();
         
         //BulletAppState
@@ -35,7 +37,7 @@ public class SurroundBoxWorld {
         Material mat = new Material(gameCon.getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
         mat.setTexture("ColorMap", gameCon.getAssetManager().loadTexture("Textures/Space_Background.jpg"));
         Standart.setMaterial(mat);
-        Standart.setLocalTranslation(0f, 0f, 0f);
+        Standart.setLocalTranslation(startVector);
         
         //Makes sides of the Cube
         Geometry Back = Standart.clone();
@@ -58,12 +60,12 @@ public class SurroundBoxWorld {
         Left.rotate(0f, (float) Math.PI/2, 0f);
         Right.rotate(0f, (float) Math.PI/2, 0f);
         
-        Right.setLocalTranslation(size, 0f, 0f);
-        Left.setLocalTranslation(-size, 0f, 0f);
-        Top.setLocalTranslation(0f, size, 0f);
-        Ground.setLocalTranslation(0f, -size, 0f);
-        Back.setLocalTranslation(0f, 0f, -size);
-        Front.setLocalTranslation(0f, 0f, size);
+        Right.move(size, 0f, 0f);
+        Left.move(-size, 0f, 0f);
+        Top.move(0f, size, 0f);
+        Ground.move(0f, -size, 0f);
+        Back.move(0f, 0f, -size);
+        Front.move(0f, 0f, size);
         
         //Attaches Collision
         
