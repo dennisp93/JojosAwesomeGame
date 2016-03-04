@@ -18,14 +18,37 @@ import com.jme3.scene.shape.Box;
  */
 public class GameController extends SimpleApplication{
     private SurroundBoxWorld gameWorld;
+    private BarrierGenerator barGen;
+    private BulletAppState bulletAppState;
+    
+    private static final int MAXOBJECTS = 10;
+    private static final float SIZE = 20;
     
     @Override
     public void simpleInitApp() {
+        
+        bulletAppState = new BulletAppState();
+        stateManager.attach(bulletAppState);
+        //bulletAppState.getPhysicsSpace().enableDebug(gameCon.getAssetManager());
+
         gameWorld = new SurroundBoxWorld(this);
+        //barGen = new BarrierGenerator(this);
     }
     
     @Override
     public void simpleUpdate(float tpf){
+    }
+    
+    public BulletAppState getBulletAppState(){
+        return bulletAppState;
+    }
+    
+    public int getMaxObjects(){
+        return MAXOBJECTS;
+    }
+    
+    public float getSize(){
+        return SIZE;
     }
     
 }
