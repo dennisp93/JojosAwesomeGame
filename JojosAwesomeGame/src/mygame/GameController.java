@@ -21,7 +21,7 @@ public class GameController extends SimpleApplication{
     private BarrierGenerator barGen;
     private BulletAppState bulletAppState;
     
-    private static final int MAXOBJECTS = 10;
+    private static final int MAXOBJECTS = 5000;
     private static final float SIZE = 20;
     
     @Override
@@ -29,10 +29,10 @@ public class GameController extends SimpleApplication{
         
         bulletAppState = new BulletAppState();
         stateManager.attach(bulletAppState);
-        //bulletAppState.getPhysicsSpace().enableDebug(gameCon.getAssetManager());
+        //bulletAppState.getPhysicsSpace().enableDebug(assetManager);
 
         gameWorld = new SurroundBoxWorld(this);
-        //barGen = new BarrierGenerator(this);
+        barGen = new BarrierGenerator(this);
     }
     
     @Override
