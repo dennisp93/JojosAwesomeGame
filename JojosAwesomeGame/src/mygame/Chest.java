@@ -29,7 +29,7 @@ public class Chest {
         Chest.setLocalTranslation(0.0f, 0.0f, 10.0f);
         Chest.move((float) (Math.random() - 0.5) * 2 * SIZE, (float) (Math.random() - 0.5) * 2 * SIZE, (float) (Math.random() - 0.5) * 2 * SIZE);
         Material matBarrier = new Material(gameCon.getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
-        matBarrier.setColor("Color", ColorRGBA.randomColor());
+        matBarrier.setColor("Color", ColorRGBA.Yellow);
         Chest.setMaterial(matBarrier);
 
         CollisionShape ChestCollisionShape = CollisionShapeFactory.createMeshShape(Chest);

@@ -31,8 +31,8 @@ public class GameController extends SimpleApplication implements AnalogListener 
     private Chest chest;
     private BulletAppState bulletAppState;
     private PlayerModel player;
-    private static final int MAXOBJECTS = 1000;
-    private static final float SIZE = 80;
+    private static final int MAXOBJECTS = 2000;
+    private static final float SIZE = 60;
     private boolean loosed;
 
     @Override
@@ -116,6 +116,16 @@ public class GameController extends SimpleApplication implements AnalogListener 
         hudText.setSize(50f);     
         hudText.setColor(ColorRGBA.Yellow);
         hudText.setText("You Loose!");             
+        hudText.setLocalTranslation(settings.getWidth()/2-100, settings.getHeight()/2+100, 0);
+        guiNode.attachChild(hudText);
+        loosed = true;
+    }
+    
+    public void showWinMessage() {
+        BitmapText hudText = new BitmapText(guiFont, false);          
+        hudText.setSize(50f);     
+        hudText.setColor(ColorRGBA.Blue);
+        hudText.setText("YOU WIN!!!");             
         hudText.setLocalTranslation(settings.getWidth()/2-100, settings.getHeight()/2+100, 0);
         guiNode.attachChild(hudText);
         loosed = true;

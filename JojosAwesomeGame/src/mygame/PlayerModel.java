@@ -28,7 +28,7 @@ public class PlayerModel {
 
     public PlayerModel(GameController gameController) {
         
-        Box b = new Box(0.2f, 0.2f, 0.2f);
+        Box b = new Box(0.1f, 0.1f, 0.1f);
         playerModel = new Geometry("Player", b);
         
         Material playerMaterial = new Material(gameController.getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");

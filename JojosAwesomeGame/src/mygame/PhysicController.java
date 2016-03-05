@@ -26,5 +26,13 @@ public class PhysicController extends RigidBodyControl implements PhysicsCollisi
         if ( event.getNodeB().getName().equals("Barrier") ) {
             this.gameController.showLooseMessage();
         }
+        
+        if ( event.getNodeB().getName().equals("Box") ) {
+            this.gameController.showLooseMessage();
+        }
+        
+        if ( event.getNodeB().getName().equals("Chest") ) {
+            this.gameController.showWinMessage();
+        }
     }    
 }
