@@ -19,9 +19,10 @@ import com.jme3.scene.shape.Box;
 public class GameController extends SimpleApplication{
     private SurroundBoxWorld gameWorld;
     private BarrierGenerator barGen;
+    private Chest chest;
     private BulletAppState bulletAppState;
     
-    private static final int MAXOBJECTS = 5000;
+    private static final int MAXOBJECTS = 50;
     private static final float SIZE = 20;
     
     @Override
@@ -33,6 +34,7 @@ public class GameController extends SimpleApplication{
 
         gameWorld = new SurroundBoxWorld(this);
         barGen = new BarrierGenerator(this);
+        chest = new Chest(this);
     }
     
     @Override
