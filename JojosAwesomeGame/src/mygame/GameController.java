@@ -6,12 +6,8 @@ package mygame;
 
 import com.jme3.app.SimpleApplication;
 import com.jme3.bullet.BulletAppState;
-import com.jme3.bullet.PhysicsSpace;
-import com.jme3.bullet.collision.PhysicsCollisionListener;
 import com.jme3.font.BitmapText;
 import com.jme3.input.ChaseCamera;
-import com.jme3.input.controls.ActionListener;
-import com.jme3.input.controls.AnalogListener;
 import com.jme3.input.controls.KeyTrigger;
 import com.jme3.light.AmbientLight;
 import com.jme3.light.DirectionalLight;
@@ -19,18 +15,15 @@ import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.RenderManager;
-import com.jme3.scene.CameraNode;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Node;
-import com.jme3.scene.control.CameraControl.ControlDirection;
 import com.jme3.scene.shape.Box;
 
 /**
  *
  * @author dragondompy
  */
-public class GameController extends SimpleApplication implements AnalogListener {
-
+public class GameController extends SimpleApplication{
     private SurroundBoxWorld gameWorld;
     private BarrierGenerator barGen;
     private BulletAppState bulletAppState;
@@ -41,7 +34,7 @@ public class GameController extends SimpleApplication implements AnalogListener 
 
     @Override
     public void simpleInitApp() {
-
+        
         bulletAppState = new BulletAppState();
         stateManager.attach(bulletAppState);
         //bulletAppState.setDebugEnabled(true);
@@ -66,23 +59,23 @@ public class GameController extends SimpleApplication implements AnalogListener 
         chaseCam.setDefaultDistance(2f);
 
     }
-
+    
     @Override
-    public void simpleUpdate(float tpf) {
+    public void simpleUpdate(float tpf){
     }
-
-    public BulletAppState getBulletAppState() {
+    
+    public BulletAppState getBulletAppState(){
         return bulletAppState;
     }
-
-    public int getMaxObjects() {
+    
+    public int getMaxObjects(){
         return MAXOBJECTS;
     }
-
-    public float getSize() {
+    
+    public float getSize(){
         return SIZE;
     }
-
+    
     public void initLight() {
         /**
          * A white ambient light source.
@@ -99,7 +92,7 @@ public class GameController extends SimpleApplication implements AnalogListener 
         sun.setColor(ColorRGBA.White);
         rootNode.addLight(sun);
     }
-
+    
     private void initKeys() {
         inputManager.addMapping("Forward", new KeyTrigger(keyInput.KEY_W));
         inputManager.addListener(this, "Forward");
@@ -123,4 +116,5 @@ public class GameController extends SimpleApplication implements AnalogListener 
         guiNode.attachChild(hudText);
         loosed = true;
     }
+    
 }
