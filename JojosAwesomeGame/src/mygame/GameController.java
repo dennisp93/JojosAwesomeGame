@@ -54,7 +54,6 @@ public class GameController extends SimpleApplication implements AnalogListener 
         ChaseCamera chaseCam = new ChaseCamera(cam, player.getPlayerModel(), inputManager);
         chaseCam.setSmoothMotion(false);
         chaseCam.setMinVerticalRotation((float)(-Math.PI/2));
-        chaseCam.setMaxVerticalRotation((float)Math.PI);
         chaseCam.setDefaultDistance(2f);
 
     }

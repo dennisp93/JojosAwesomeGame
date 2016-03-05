@@ -45,11 +45,11 @@ public class SurroundBoxWorld {
     
     private void createSides(Geometry Standart){
         Geometry Back = Standart.clone();
-        addMaterial(Back, "Textures/Space_Background.jpg");
+        addMaterial(Back, "Textures/box_back.jpg");
         Back.move(0f, 0f, -SIZE);
         
         Geometry Front = Standart.clone();
-        addMaterial(Front, "Textures/Space_Background.jpg");
+        addMaterial(Front, "Textures/box_front.jpg");
         Front.move(0f, 0f, SIZE);
         
         Geometry Ground = Standart.clone();
@@ -58,12 +58,12 @@ public class SurroundBoxWorld {
         Ground.move(0f, -SIZE, 0f);
         
         Geometry Left = Standart.clone();
-        addMaterial(Left, "Textures/Space_Background.jpg");
+        addMaterial(Left, "Textures/box_left.jpg");
         Left.rotate(0f, (float) Math.PI/2, 0f);
         Left.move(-SIZE, 0f, 0f);
         
         Geometry Right = Standart.clone();
-        addMaterial(Right, "Textures/Space_Background.jpg");
+        addMaterial(Right, "Textures/box_right.jpg");
         Right.rotate(0f, (float) -Math.PI/2, 0f);
         Right.move(SIZE, 0f, 0f);
         
