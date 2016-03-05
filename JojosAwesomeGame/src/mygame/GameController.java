@@ -28,6 +28,7 @@ import com.jme3.scene.shape.Box;
 public class GameController extends SimpleApplication implements AnalogListener {
     private SurroundBoxWorld gameWorld;
     private BarrierGenerator barGen;
+    private Chest chest;
     private BulletAppState bulletAppState;
     private PlayerModel player;
     private static final int MAXOBJECTS = 1000;
@@ -47,6 +48,7 @@ public class GameController extends SimpleApplication implements AnalogListener 
         gameWorld = new SurroundBoxWorld(this);
         barGen = new BarrierGenerator(this);
         player = new PlayerModel(this);
+	chest = new Chest(this);
 
         initLight();
         initKeys();
