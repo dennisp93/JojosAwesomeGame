@@ -30,7 +30,7 @@ public class SurroundBoxWorld {
         this.gameCon = gameCon;
         SIZE = gameCon.getSize();
         
-        Vector3f startVector = new Vector3f(0.0f, 0.0f, 10.0f);
+        Vector3f startVector = new Vector3f(0.0f, 0.0f, 0.0f);
         sideList = new ArrayList<Geometry>();
               
         //Predefined Box
