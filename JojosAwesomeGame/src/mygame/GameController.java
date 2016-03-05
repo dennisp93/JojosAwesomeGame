@@ -8,6 +8,8 @@ import com.jme3.app.SimpleApplication;
 import com.jme3.bullet.BulletAppState;
 import com.jme3.font.BitmapText;
 import com.jme3.input.ChaseCamera;
+import com.jme3.input.KeyInput;
+import com.jme3.input.controls.AnalogListener;
 import com.jme3.input.controls.KeyTrigger;
 import com.jme3.light.AmbientLight;
 import com.jme3.light.DirectionalLight;
@@ -23,7 +25,7 @@ import com.jme3.scene.shape.Box;
  *
  * @author dragondompy
  */
-public class GameController extends SimpleApplication{
+public class GameController extends SimpleApplication implements AnalogListener {
     private SurroundBoxWorld gameWorld;
     private BarrierGenerator barGen;
     private BulletAppState bulletAppState;
@@ -94,7 +96,7 @@ public class GameController extends SimpleApplication{
     }
     
     private void initKeys() {
-        inputManager.addMapping("Forward", new KeyTrigger(keyInput.KEY_W));
+        inputManager.addMapping("Forward", new KeyTrigger(KeyInput.KEY_W));
         inputManager.addListener(this, "Forward");
     }
 

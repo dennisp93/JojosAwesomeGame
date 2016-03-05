@@ -23,7 +23,7 @@ public class PhysicController extends RigidBodyControl implements PhysicsCollisi
     }
 
     public void collision(PhysicsCollisionEvent event) {
-        if ( event.getNodeA().getName().equals("Barrier") ) {
+        if ( event.getNodeB().getName().equals("Barrier") ) {
             this.gameController.showLooseMessage();
         }
     }    
