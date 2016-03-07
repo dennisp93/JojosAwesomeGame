@@ -20,14 +20,21 @@ import com.jme3.scene.shape.Sphere;
 public class Chest {
     
     private float SIZE;
+    private Sphere s;
+    private Geometry Chest;
+    private float maxScale;
+    private float scale;
     
     public Chest(GameController gameCon){
-        Sphere s = new Sphere(30,30,1);
-        Geometry Chest = new Geometry("Chest", s);
+        s = new Sphere(30,30,1);
+        Chest = new Geometry("Chest", s);
         SIZE = gameCon.getSize();
+        
+        scale = 1;
+        maxScale = 1000;
 
         Chest.setLocalTranslation(0.0f, 0.0f, 10.0f);
-        Chest.move((float) (Math.random() - 0.5) * 2 * SIZE, (float) (Math.random() - 0.5) * 2 * SIZE, (float) (Math.random() - 0.5) * 2 * SIZE);
+        Chest.move((float) (Math.random() - 0.5) * (SIZE/2), (float) (Math.random() - 0.5) * (SIZE/2), (float) (Math.random() - 0.5) * (SIZE/2));
         Material matBarrier = new Material(gameCon.getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
         matBarrier.setColor("Color", ColorRGBA.Yellow);
         Chest.setMaterial(matBarrier);
@@ -39,5 +46,11 @@ public class Chest {
         
         gameCon.getRootNode().attachChild(Chest);
     }
-    
+
+    void pumpUp() {
+        //if(scale < maxScale) {
+            Chest.scale(1.01f);
+            //scale = scale + 1;
+        //}        
+    }    
 }

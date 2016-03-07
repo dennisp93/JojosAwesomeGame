@@ -27,9 +27,10 @@ public class GameController extends SimpleApplication implements AnalogListener 
     private Chest chest;
     private BulletAppState bulletAppState;
     private PlayerModel player;
+    private BitmapText hudText;
     private static final int MAXOBJECTS = 2000;
     private static final float SIZE = 60;
-    private static final float SPEED = 20;
+    private float SPEED = 20;
     private float timeRunning;
     private boolean loosed;
 
@@ -47,6 +48,8 @@ public class GameController extends SimpleApplication implements AnalogListener 
         barGen = new BarrierGenerator(this);
         player = new PlayerModel(this);
         chest = new Chest(this);
+        
+        hudText = new BitmapText(guiFont, false);        
 
         initLight();
         initKeys();
@@ -68,9 +71,22 @@ public class GameController extends SimpleApplication implements AnalogListener 
             if (timeRunning > 5) {
                 player.getPlayerModel().move(cam.getDirection().mult(SPEED * tpf));
             }
+            
+            if (timeRunning < 20) {
+                SPEED = 20;
+            } else if (timeRunning < 40) {
+                SPEED = 25;
+            } else if (timeRunning < 60) {
+                SPEED = 30;
+            } else if (timeRunning < 70) {
+                SPEED = 35;
+            } else if (timeRunning < 80) {
+                SPEED = 40;
+            }
+        } else {
+            chest.pumpUp();
         }
         player.getPlayerControll().setPhysicsLocation(player.getPlayerModel().getLocalTranslation());
-
         player.getPlayerControll().activate();
 
     }
@@ -119,18 +135,16 @@ public class GameController extends SimpleApplication implements AnalogListener 
 
     }
 
-    public void showLooseMessage() {
-        BitmapText hudText = new BitmapText(guiFont, false);
+    public void showLooseMessage() {        
         hudText.setSize(50f);
         hudText.setColor(ColorRGBA.Yellow);
-        hudText.setText("You Loose!");
+        hudText.setText("You Loose!\nFlight Time: " + timeRunning);
         hudText.setLocalTranslation(settings.getWidth() / 2 - 100, settings.getHeight() / 2 + 100, 0);
         guiNode.attachChild(hudText);
         loosed = true;
     }
 
     public void showWinMessage() {
-        BitmapText hudText = new BitmapText(guiFont, false);
         hudText.setSize(50f);
         hudText.setColor(ColorRGBA.Blue);
         hudText.setText("YOU WIN!!!\nTime: " + timeRunning);
